@@ -33,7 +33,6 @@ int main()
   uWS::Hub h;
 
   PID pid;
-  // TODO: Initialize the pid variable.
   // Values found by tweaking lesson values
   pid.Init(0.12, 0.0, 2.5);
 
@@ -53,12 +52,7 @@ int main()
           double speed = std::stod(j[1]["speed"].get<std::string>());
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value = 0.0;
-          /*
-          * TODO: Calcuate steering value here, remember the steering value is
-          * [-1, 1].
-          * NOTE: Feel free to play around with the throttle and speed. Maybe use
-          * another PID controller to control the speed!
-          */
+
           pid.UpdateError(cte);
 
           steer_value -= pid.TotalError();
